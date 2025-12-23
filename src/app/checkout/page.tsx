@@ -18,9 +18,9 @@ export default function CheckoutPage() {
   const [shipping, setShipping] = useState({ firstName: "", lastName: "", email: "", phone: "", street: "", city: "", state: "", zipCode: "", country: "USA" });
   const [payment, setPayment] = useState({ cardNumber: "", expiry: "", cvv: "", nameOnCard: "" });
 
-  const formatPrice = (price) => new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 0 }).format(price);
+  const formatPrice = (price: number) => new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 0 }).format(price);
 
-  const handlePlaceOrder = (e) => {
+  const handlePlaceOrder = (e: React.FormEvent) => {
     e.preventDefault();
     const newOrderId = uuidv4().slice(0, 8).toUpperCase();
     addOrder({ id: newOrderId, userId: user?.id || "guest", items, total: total() + (total() >= 500 ? 0 : 25), status: "confirmed", shippingAddress: shipping, trackingNumber: "BBOB" + newOrderId, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() });
