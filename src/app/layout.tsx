@@ -34,8 +34,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={playfair.variable + " " + cormorant.variable + " antialiased"}>
+        {/* Skip to main content link for accessibility */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-[100] focus:bg-pink-500 focus:text-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold"
+        >
+          Skip to main content
+        </a>
         <Navbar />
-        <main className="min-h-screen">
+        <main id="main-content" className="min-h-screen" role="main">
           {children}
         </main>
         <Footer />

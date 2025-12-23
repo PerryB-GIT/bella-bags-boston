@@ -4,7 +4,7 @@ import { Facebook, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white">
+    <footer className="bg-black text-white" role="contentinfo">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
           {/* Logo and About */}
@@ -23,7 +23,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <nav aria-label="Quick links">
             <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-pink-400">Quick Links</h3>
             <ul className="space-y-2">
               <li>
@@ -52,10 +52,10 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
-          </div>
+          </nav>
 
           {/* Customer Service */}
-          <div>
+          <nav aria-label="Customer service">
             <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-pink-400">Customer Service</h3>
             <ul className="space-y-2">
               <li>
@@ -79,29 +79,29 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
-          </div>
+          </nav>
 
           {/* Contact Info */}
           <div className="col-span-2 md:col-span-1">
             <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-pink-400">Contact Us</h3>
-            <ul className="space-y-3">
-              <li className="flex items-center gap-2 text-gray-400 text-sm sm:text-base">
-                <MapPin size={18} className="text-pink-400 flex-shrink-0" />
+            <address className="not-italic space-y-3">
+              <p className="flex items-center gap-2 text-gray-400 text-sm sm:text-base">
+                <MapPin size={18} className="text-pink-400 flex-shrink-0" aria-hidden="true" />
                 Boston, Massachusetts
-              </li>
-              <li>
+              </p>
+              <p>
                 <a href="mailto:info@bellabags.com" className="flex items-center gap-2 text-gray-400 hover:text-pink-400 transition-colors text-sm sm:text-base">
-                  <Mail size={18} className="text-pink-400 flex-shrink-0" />
+                  <Mail size={18} className="text-pink-400 flex-shrink-0" aria-hidden="true" />
                   info@bellabags.com
                 </a>
-              </li>
-              <li>
+              </p>
+              <p>
                 <a href="tel:+1234567890" className="flex items-center gap-2 text-gray-400 hover:text-pink-400 transition-colors text-sm sm:text-base">
-                  <Phone size={18} className="text-pink-400 flex-shrink-0" />
+                  <Phone size={18} className="text-pink-400 flex-shrink-0" aria-hidden="true" />
                   (123) 456-7890
                 </a>
-              </li>
-            </ul>
+              </p>
+            </address>
             
             {/* Social Links */}
             <div className="flex gap-4 mt-4">
@@ -110,14 +110,16 @@ export default function Footer() {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-pink-400 transition-colors"
+                aria-label="Follow us on Facebook (opens in new tab)"
               >
-                <Facebook size={24} />
+                <Facebook size={24} aria-hidden="true" />
               </a>
               <a 
                 href="#" 
                 className="text-gray-400 hover:text-pink-400 transition-colors"
+                aria-label="Follow us on Instagram"
               >
-                <Instagram size={24} />
+                <Instagram size={24} aria-hidden="true" />
               </a>
             </div>
           </div>
