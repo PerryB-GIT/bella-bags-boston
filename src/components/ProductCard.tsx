@@ -1,6 +1,8 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
+import { useState } from 'react';
 import { Product } from '@/types';
 import { useCartStore } from '@/store';
 import { ShoppingBag, Heart } from 'lucide-react';
@@ -11,6 +13,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const { addItem } = useCartStore();
+  const [imageError, setImageError] = useState(false);
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -25,17 +28,30 @@ export default function ProductCard({ product }: ProductCardProps) {
     }).format(price);
   };
 
+  const hasImage = product.images && product.images.length > 0 && !imageError;
+
   return (
     <div className="group card-elegant overflow-hidden">
       <Link href={'/shop/' + product.id}>
         <div className="relative aspect-square bg-gray-100 overflow-hidden">
-          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-purple-100 to-white">
-            <div className="text-center p-3 sm:p-4">
-              <p className="text-gray-600 font-serif text-sm sm:text-lg">{product.brand}</p>
-              <p className="text-gray-400 text-xs sm:text-sm mt-1 line-clamp-2">{product.name}</p>
+          {hasImage ? (
+            <Image
+              src={product.images[0]}
+              alt={product.name}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-300"
+              onError={() => setImageError(true)}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-purple-100 to-white">
+              <div className="text-center p-3 sm:p-4">
+                <p className="text-gray-600 font-serif text-sm sm:text-lg">{product.brand}</p>
+                <p className="text-gray-400 text-xs sm:text-sm mt-1 line-clamp-2">{product.name}</p>
+              </div>
             </div>
-          </div>
-          
+          )}
+
           {/* Badges */}
           <div className="absolute top-2 sm:top-4 left-2 sm:left-4 flex flex-col gap-1 sm:gap-2">
             {product.salePrice && (
@@ -57,7 +73,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             </span>
           </div>
 
-          {/* Hover overlay - Hidden on touch devices, show add to cart button below instead */}
+          {/* Hover overlay */}
           <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden sm:flex items-center justify-center gap-4">
             <button
               onClick={handleAddToCart}
@@ -87,7 +103,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             )}
           </div>
           <p className="text-gray-500 text-xs sm:text-sm mt-1 sm:mt-2">{product.category}</p>
-          
+
           {/* Mobile add to cart button */}
           <button
             onClick={handleAddToCart}

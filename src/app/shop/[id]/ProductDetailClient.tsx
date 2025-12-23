@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Product } from "@/types";
 import { sampleProducts } from "@/lib/data";
 import { useCartStore } from "@/store";
@@ -13,6 +14,7 @@ interface ProductDetailClientProps {
 export default function ProductDetailClient({ product }: ProductDetailClientProps) {
   const { addItem } = useCartStore();
   const [addedToCart, setAddedToCart] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
   if (!product) {
     return (
@@ -43,6 +45,8 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
     .filter(p => p.id !== product.id && (p.brand === product.brand || p.category === product.category))
     .slice(0, 4);
 
+  const hasImage = product.images && product.images.length > 0 && !imageError;
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Breadcrumb */}
@@ -63,11 +67,25 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
             {/* Product Image */}
-            <div className="relative aspect-square bg-gradient-to-br from-purple-100 via-pink-50 to-white rounded-lg flex items-center justify-center">
-              <div className="text-center p-8">
-                <p className="text-gray-600 font-serif text-3xl">{product.brand}</p>
-                <p className="text-gray-400 text-lg mt-2">{product.name}</p>
-              </div>
+            <div className="relative aspect-square bg-gray-100 rounded-lg overflow-hidden">
+              {hasImage ? (
+                <Image
+                  src={product.images[0]}
+                  alt={product.name}
+                  fill
+                  className="object-cover"
+                  onError={() => setImageError(true)}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-purple-100 via-pink-50 to-white">
+                  <div className="text-center p-8">
+                    <p className="text-gray-600 font-serif text-3xl">{product.brand}</p>
+                    <p className="text-gray-400 text-lg mt-2">{product.name}</p>
+                  </div>
+                </div>
+              )}
 
               {/* Badges */}
               <div className="absolute top-4 left-4 flex flex-col gap-2">
@@ -185,11 +203,23 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                   href={"/shop/" + relatedProduct.id}
                   className="group card-elegant overflow-hidden"
                 >
-                  <div className="aspect-square bg-gradient-to-br from-purple-100 to-white flex items-center justify-center p-4">
-                    <div className="text-center">
-                      <p className="text-gray-600 font-serif text-sm">{relatedProduct.brand}</p>
-                      <p className="text-gray-400 text-xs mt-1">{relatedProduct.name}</p>
-                    </div>
+                  <div className="aspect-square bg-gray-100 relative overflow-hidden">
+                    {relatedProduct.images && relatedProduct.images.length > 0 ? (
+                      <Image
+                        src={relatedProduct.images[0]}
+                        alt={relatedProduct.name}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-purple-100 to-white p-4">
+                        <div className="text-center">
+                          <p className="text-gray-600 font-serif text-sm">{relatedProduct.brand}</p>
+                          <p className="text-gray-400 text-xs mt-1">{relatedProduct.name}</p>
+                        </div>
+                      </div>
+                    )}
                   </div>
                   <div className="p-3">
                     <p className="text-xs text-gray-500 uppercase tracking-wider">{relatedProduct.brand}</p>
