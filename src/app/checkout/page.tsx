@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCartStore, useAuthStore, useOrderStore } from "@/store";
@@ -14,9 +14,22 @@ export default function CheckoutPage() {
   const [step, setStep] = useState(1);
   const [orderComplete, setOrderComplete] = useState(false);
   const [orderId, setOrderId] = useState("");
+  const [isHydrated, setIsHydrated] = useState(false);
   
   const [shipping, setShipping] = useState({ firstName: "", lastName: "", email: "", phone: "", street: "", city: "", state: "", zipCode: "", country: "USA" });
   const [payment, setPayment] = useState({ cardNumber: "", expiry: "", cvv: "", nameOnCard: "" });
+
+  // Wait for Zustand to hydrate from localStorage
+  useEffect(() => {
+    setIsHydrated(true);
+  }, []);
+
+  // Redirect to cart only after hydration and if cart is empty
+  useEffect(() => {
+    if (isHydrated && items.length === 0 && !orderComplete) {
+      router.push("/cart");
+    }
+  }, [isHydrated, items.length, orderComplete, router]);
 
   const formatPrice = (price: number) => new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 0 }).format(price);
 
@@ -29,7 +42,28 @@ export default function CheckoutPage() {
     clearCart();
   };
 
-  if (items.length === 0 && !orderComplete) { router.push("/cart"); return null; }
+  // Show loading state until hydrated
+  if (!isHydrated) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-pink-500 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading checkout...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // After hydration, if cart is empty, show brief message while redirecting
+  if (items.length === 0 && !orderComplete) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-gray-600">Your cart is empty. Redirecting...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (orderComplete) {
     return (
