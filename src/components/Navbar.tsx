@@ -34,7 +34,7 @@ export default function Navbar() {
               alt="Bella Bags of Boston"
               width={180}
               height={180}
-              className="w-[100px] h-auto sm:w-[140px] md:w-[180px]"
+              className="w-[100px] h-auto rounded-full sm:w-[140px] md:w-[180px]"
               priority
             />
           </Link>
