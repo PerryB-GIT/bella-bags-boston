@@ -17,7 +17,15 @@ export default function Home() {
               <div className="flex justify-center order-1 md:order-2 animate-fade-in">
                 <div className="relative">
                   <div className="absolute -inset-4 bg-pink-200 rounded-full blur-3xl opacity-30"></div>
-                  <Image src="/images/logo-animated.gif" alt="Bella Bags of Boston" width={400} height={400} className="relative z-10 w-[220px] h-[220px] sm:w-[320px] sm:h-[320px] md:w-[400px] md:h-[400px] rounded-3xl shadow-xl" priority unoptimized />
+                  <Image 
+                    src="/images/logo-animated.gif" 
+                    alt="Bella Bags of Boston" 
+                    width={500} 
+                    height={500} 
+                    className="relative z-10 w-auto h-auto max-w-[280px] sm:max-w-[350px] md:max-w-[420px]" 
+                    priority 
+                    unoptimized 
+                  />
                 </div>
               </div>
               <div className="text-center md:text-left animate-fade-in order-2 md:order-1">
@@ -58,7 +66,7 @@ export default function Home() {
       <section className="py-10 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-6 sm:gap-12 items-center">
-            <div className="order-2 md:order-1"><Image src="/images/logo.png" alt="Bella Bags of Boston" width={400} height={400} className="mx-auto w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] rounded-2xl shadow-lg" /></div>
+            <div className="order-2 md:order-1"><Image src="/images/logo.png" alt="Bella Bags of Boston" width={400} height={400} className="mx-auto w-auto h-auto max-w-[220px] sm:max-w-[320px] md:max-w-[400px]" /></div>
             <div className="order-1 md:order-2 text-center md:text-left">
               <h2 className="text-xl sm:text-3xl md:text-4xl font-serif text-gray-900 mb-3 sm:mb-6">Welcome to Bella Bags</h2>
               <p className="text-xs sm:text-base text-gray-600 leading-relaxed mb-2 sm:mb-4">At Bella Bags of Boston, we believe every woman deserves to carry a piece of luxury. Our carefully curated collection features authentic designer handbags from the world&apos;s most coveted fashion houses.</p>

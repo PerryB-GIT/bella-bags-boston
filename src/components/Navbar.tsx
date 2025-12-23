@@ -26,15 +26,16 @@ export default function Navbar() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-24 md:h-28">
-          {/* Logo - Bigger and softer */}
-          <Link href="/" className="flex items-center">
+        <div className="flex justify-between items-center h-20 sm:h-24 md:h-28">
+          {/* Logo - Bigger, no extra white space */}
+          <Link href="/" className="flex items-center -ml-2">
             <Image
               src="/images/logo.png"
               alt="Bella Bags of Boston"
-              width={100}
-              height={100}
-              className="object-contain rounded-xl shadow-md hover:shadow-lg transition-shadow w-[70px] h-[70px] sm:w-[90px] sm:h-[90px] md:w-[100px] md:h-[100px]"
+              width={120}
+              height={120}
+              className="w-[80px] h-auto sm:w-[100px] md:w-[120px]"
+              priority
             />
           </Link>
 
@@ -100,7 +101,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Navigation - Improved */}
+      {/* Mobile Navigation */}
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-200 shadow-lg">
           <div className="px-6 py-6 space-y-1">
