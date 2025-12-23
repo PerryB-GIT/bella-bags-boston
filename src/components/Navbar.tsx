@@ -32,9 +32,9 @@ export default function Navbar() {
             <Image
               src="/images/logo.png"
               alt="Bella Bags of Boston"
-              width={120}
-              height={120}
-              className="w-[80px] h-auto sm:w-[100px] md:w-[120px]"
+              width={180}
+              height={180}
+              className="w-[100px] h-auto sm:w-[140px] md:w-[180px]"
               priority
             />
           </Link>
