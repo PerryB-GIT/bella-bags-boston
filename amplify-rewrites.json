@@ -1,0 +1,52 @@
+[
+  {
+    "source": "/shop/<id>",
+    "target": "/shop/<id>.html",
+    "status": "200"
+  },
+  {
+    "source": "/checkout",
+    "target": "/checkout.html",
+    "status": "200"
+  },
+  {
+    "source": "/cart",
+    "target": "/cart.html",
+    "status": "200"
+  },
+  {
+    "source": "/shop",
+    "target": "/shop.html",
+    "status": "200"
+  },
+  {
+    "source": "/about",
+    "target": "/about.html",
+    "status": "200"
+  },
+  {
+    "source": "/contact",
+    "target": "/contact.html",
+    "status": "200"
+  },
+  {
+    "source": "/admin",
+    "target": "/admin.html",
+    "status": "200"
+  },
+  {
+    "source": "/client",
+    "target": "/client.html",
+    "status": "200"
+  },
+  {
+    "source": "/track",
+    "target": "/track.html",
+    "status": "200"
+  },
+  {
+    "source": "/<*>",
+    "target": "/404.html",
+    "status": "404"
+  }
+]
