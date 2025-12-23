@@ -118,8 +118,8 @@ export const sampleProducts: Product[] = [
 ];
 
 export const adminUsers: { email: string; password: string; name: string }[] = [
-  { email: 'jan@bellabags.com', password: 'BBOB123!', name: 'Jan' },
-  { email: 'perry@bellabags.com', password: 'BBOB123!', name: 'Perry' },
+  { email: 'jan@bellabags.com', password: 'BBOB123!', name: 'Jan Ferraro' },
+  { email: 'jessica@bellabags.com', password: 'BBOB123!', name: 'Jessica Cushing' },
 ];
 
 export const categories = [

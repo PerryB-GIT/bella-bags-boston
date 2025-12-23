@@ -5,16 +5,16 @@ import { Facebook, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 export default function Footer() {
   return (
     <footer className="bg-black text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
           {/* Logo and About */}
-          <div className="col-span-1 md:col-span-1">
+          <div className="col-span-2 md:col-span-1 text-center md:text-left">
             <Image
               src="/images/logo.png"
               alt="Bella Bags of Boston"
-              width={100}
-              height={100}
-              className="object-contain bg-white rounded-full p-2 mb-4"
+              width={120}
+              height={120}
+              className="object-contain bg-white rounded-2xl shadow-lg p-2 mb-4 mx-auto md:mx-0"
             />
             <p className="text-gray-400 text-sm leading-relaxed">
               Boston&apos;s premier destination for authentic luxury handbags. 
@@ -24,30 +24,30 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-pink-400">Quick Links</h3>
+            <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-pink-400">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-gray-400 hover:text-pink-400 transition-colors">
+                <Link href="/" className="text-gray-400 hover:text-pink-400 transition-colors text-sm sm:text-base">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/shop" className="text-gray-400 hover:text-pink-400 transition-colors">
+                <Link href="/shop" className="text-gray-400 hover:text-pink-400 transition-colors text-sm sm:text-base">
                   Shop
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-gray-400 hover:text-pink-400 transition-colors">
+                <Link href="/about" className="text-gray-400 hover:text-pink-400 transition-colors text-sm sm:text-base">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-400 hover:text-pink-400 transition-colors">
+                <Link href="/contact" className="text-gray-400 hover:text-pink-400 transition-colors text-sm sm:text-base">
                   Contact
                 </Link>
               </li>
               <li>
-                <Link href="/track" className="text-gray-400 hover:text-pink-400 transition-colors">
+                <Link href="/track" className="text-gray-400 hover:text-pink-400 transition-colors text-sm sm:text-base">
                   Track Order
                 </Link>
               </li>
@@ -56,25 +56,25 @@ export default function Footer() {
 
           {/* Customer Service */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-pink-400">Customer Service</h3>
+            <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-pink-400">Customer Service</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/client" className="text-gray-400 hover:text-pink-400 transition-colors">
+                <Link href="/client" className="text-gray-400 hover:text-pink-400 transition-colors text-sm sm:text-base">
                   My Account
                 </Link>
               </li>
               <li>
-                <Link href="/cart" className="text-gray-400 hover:text-pink-400 transition-colors">
+                <Link href="/cart" className="text-gray-400 hover:text-pink-400 transition-colors text-sm sm:text-base">
                   Shopping Cart
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-400 hover:text-pink-400 transition-colors">
-                  Returns & Exchanges
+                <Link href="/contact" className="text-gray-400 hover:text-pink-400 transition-colors text-sm sm:text-base">
+                  Returns
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-400 hover:text-pink-400 transition-colors">
+                <Link href="/contact" className="text-gray-400 hover:text-pink-400 transition-colors text-sm sm:text-base">
                   Shipping Info
                 </Link>
               </li>
@@ -82,22 +82,22 @@ export default function Footer() {
           </div>
 
           {/* Contact Info */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-pink-400">Contact Us</h3>
+          <div className="col-span-2 md:col-span-1">
+            <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-pink-400">Contact Us</h3>
             <ul className="space-y-3">
-              <li className="flex items-center gap-2 text-gray-400">
-                <MapPin size={18} className="text-pink-400" />
+              <li className="flex items-center gap-2 text-gray-400 text-sm sm:text-base">
+                <MapPin size={18} className="text-pink-400 flex-shrink-0" />
                 Boston, Massachusetts
               </li>
               <li>
-                <a href="mailto:info@bellabags.com" className="flex items-center gap-2 text-gray-400 hover:text-pink-400 transition-colors">
-                  <Mail size={18} className="text-pink-400" />
+                <a href="mailto:info@bellabags.com" className="flex items-center gap-2 text-gray-400 hover:text-pink-400 transition-colors text-sm sm:text-base">
+                  <Mail size={18} className="text-pink-400 flex-shrink-0" />
                   info@bellabags.com
                 </a>
               </li>
               <li>
-                <a href="tel:+1234567890" className="flex items-center gap-2 text-gray-400 hover:text-pink-400 transition-colors">
-                  <Phone size={18} className="text-pink-400" />
+                <a href="tel:+1234567890" className="flex items-center gap-2 text-gray-400 hover:text-pink-400 transition-colors text-sm sm:text-base">
+                  <Phone size={18} className="text-pink-400 flex-shrink-0" />
                   (123) 456-7890
                 </a>
               </li>
@@ -124,9 +124,20 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-xs sm:text-sm">
           <p>&copy; {new Date().getFullYear()} Bella Bags of Boston. All rights reserved.</p>
           <p className="mt-2">Authenticity Guaranteed on All Products</p>
+          <p className="mt-4 text-xs">
+            Developed by{' '}
+            <a
+              href="https://support-forge.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-pink-400 hover:text-pink-300 transition-colors"
+            >
+              Support Forge
+            </a>
+          </p>
         </div>
       </div>
     </footer>

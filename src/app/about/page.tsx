@@ -14,7 +14,7 @@ export default function AboutPage() {
                 Bella Bags of Boston was born from a passion for luxury fashion and a commitment to making designer handbags accessible to every woman who dreams of carrying one.
               </p>
               <p className="text-gray-600 leading-relaxed mb-4">
-                Founded by Jan and Perry, two lifelong friends with decades of combined experience in the luxury fashion industry, we set out to create a destination where authenticity meets affordability.
+                Founded by Jan Ferraro and Jessica Cushing, two lifelong friends with decades of combined experience in the luxury fashion industry, we set out to create a destination where authenticity meets affordability.
               </p>
               <p className="text-gray-600 leading-relaxed">
                 Every bag in our collection is hand-selected and authenticated by our expert team, ensuring you receive only genuine designer pieces at exceptional prices.
